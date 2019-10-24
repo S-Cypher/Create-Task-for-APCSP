@@ -1,0 +1,32 @@
+import tkinter as tk
+from time import sleep
+import os
+
+def welcome_message():
+  print("Welcome!")
+  sleep(1)
+  print("This program is a fun adventure game!")
+  sleep(1)
+  print("Use the buttons in the other window to control your experience")
+  sleep(1)
+  print("Ready? Click 'Start' to start the game!")
+
+def story_start():
+  os.system('cls')
+  print("You're exploring a forest when you come across a cave.")
+  sleep(1)
+
+root = tk.Tk
+frame = tk.Frame(root)
+frame.pack()
+
+stop = tk.Button(frame,text="Quit",fg="red",command=quit)
+stop.pack(side=tk.LEFT)
+
+intro = tk.Button(frame,text="Intro",command=welcome_message)
+intro.pack(side=tk.LEFT)
+
+start = tk.Button(frame,text="Start",command=story_start)
+start.pack(side=tk.LEFT)
+
+root.mainloop()
