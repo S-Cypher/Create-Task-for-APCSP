@@ -2,31 +2,69 @@ import tkinter as tk
 from time import sleep
 import os
 
-def welcome_message():
-  print("Welcome!")
-  sleep(1)
-  print("This program is a fun adventure game!")
-  sleep(1)
-  print("Use the buttons in the other window to control your experience")
-  sleep(1)
-  print("Ready? Click 'Start' to start the game!")
+sword = False
 
 def story_start():
-  os.system('cls')
-  print("You're exploring a forest when you come across a cave.")
-  sleep(1)
+    os.system('cls')
+    print("You're exploring a forest when you come across a cave.")
+    sleep(1.4)
+    print("You've been traveling for a long time and you're tired but, the cave intrigues you.")
+    sleep(1.4)
+    print("Do you travel in the cave or make a campsite?")
+    choice1.configure(text="Cave",command=path_one)
+    choice2.configure(text="Campsite",command=path_two)
 
-root = tk.Tk
+def path_one():
+    os.system('cls')
+    print("You chose to explore the cave.")
+    sleep(0.8)
+    print("You come across a sword on the ground")
+    print("Do you pick up the sword or leave it?")
+    choice1.configure(text="Pick up", command=sword_choice)
+    choice2.configure(text="Leave it", command=no_sword)
+
+def sword_choice():
+    os.system('cls')
+    sword = True
+    print("You're walking down a path until you come across a monster")
+    sleep(0.8)
+    
+def no_sword():
+    os.system('cls')
+    sword = False
+    print("You're walking down a path until you come across a monster")
+    sleep(0.8)
+
+
+
+
+def path_two():
+    os.system('cls')
+    print("You chose to set up a campsite.")
+    
+
+root = tk.Tk()
+root.title("Let's Go On An Adventure!")
 frame = tk.Frame(root)
 frame.pack()
 
-stop = tk.Button(frame,text="Quit",fg="red",command=quit)
-stop.pack(side=tk.LEFT)
+bottomframe = tk.Frame(root)
+bottomframe.pack()
 
-intro = tk.Button(frame,text="Intro",command=welcome_message)
-intro.pack(side=tk.LEFT)
+stop = tk.Button(bottomframe,text="Quit",fg="red",command=quit)
+stop.pack(side=tk.BOTTOM)
 
 start = tk.Button(frame,text="Start",command=story_start)
 start.pack(side=tk.LEFT)
 
+choice1 = tk.Button(frame,text="Cave",command=path_one)
+choice1.pack(side=tk.LEFT)
+
+choice2 = tk.Button(frame,text="Campsite",command=path_two)
+choice2.pack(side=tk.LEFT)
+
+
+
+
 root.mainloop()
+
