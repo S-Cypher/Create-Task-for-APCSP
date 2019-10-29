@@ -29,18 +29,28 @@ def sword_choice():
     print("You're walking down a path until you come across a monster")
     sleep(0.8)
     
+    
 def no_sword():
     os.system('cls')
     sword = False
     print("You're walking down a path until you come across a monster")
     sleep(0.8)
+    print("You have no other weapon but your hands to defend ")
 
 
 
 
 def path_two():
     os.system('cls')
-    print("You chose to set up a campsite.")
+    print("You chose to set up a campsite with a small tent.")
+    sleep(0.8)
+    print("Since it's pretty late, you fall asleep")
+    sleep(0.8)
+    print(".")
+    sleep(0.8)
+    print(".")
+    sleep(0.8)
+    print(".")
     
 
 root = tk.Tk()
@@ -67,4 +77,3 @@ choice2.pack(side=tk.LEFT)
 
 
 root.mainloop()
-
