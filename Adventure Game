@@ -2,45 +2,47 @@ import tkinter as tk
 from time import sleep
 import os
 
+os.system('cls')
+print("Press 'Start' to start the adventure.")
+
 sword = False
 
 def story_start():
     os.system('cls')
     print("You're exploring a forest when you come across a cave.")
-    sleep(1.4)
+    sleep(0.8)
     print("You've been traveling for a long time and you're tired but, the cave intrigues you.")
-    sleep(1.4)
+    sleep(0.8)
     print("Do you travel in the cave or make a campsite?")
-    choice1.configure(text="Cave",command=path_one)
-    choice2.configure(text="Campsite",command=path_two)
+    choice1.configure(text="Cave",command=cave)
+    choice2.configure(text="Campsite",command=campsite)
 
-def path_one():
+def cave():
     os.system('cls')
     print("You chose to explore the cave.")
     sleep(0.8)
     print("You come across a sword on the ground")
     print("Do you pick up the sword or leave it?")
-    choice1.configure(text="Pick up", command=sword_choice)
-    choice2.configure(text="Leave it", command=no_sword)
+    choice1.configure(text="Pick up", command=sword_true)
+    choice2.configure(text="Leave it", command=monster)
 
 def sword_choice():
-    os.system('cls')
+    global sword
     sword = True
-    print("You're walking down a path until you come across a monster")
-    sleep(0.8)
+    monster()
     
     
-def no_sword():
+def monster():
     os.system('cls')
-    sword = False
     print("You're walking down a path until you come across a monster")
     sleep(0.8)
-    print("You have no other weapon but your hands to defend ")
-
-
-
-
-def path_two():
+    global sword
+    if sword == False:
+        print("You have no other weapon but your hands to defend yourself.")
+    elif sword == True:
+        print("You have the sword to defend yourself!")
+     
+def campsite():
     os.system('cls')
     print("You chose to set up a campsite with a small tent.")
     sleep(0.8)
@@ -51,6 +53,8 @@ def path_two():
     print(".")
     sleep(0.8)
     print(".")
+    sleep(0.8)
+    print("Morning comes and you set out to find a way out of the forest.")
     
 
 root = tk.Tk()
