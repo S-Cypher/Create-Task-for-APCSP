@@ -10,6 +10,7 @@ monster_killed = False
 
 def story_start():
     os.system('cls')
+    start.pack_forget()
     print("You're exploring a forest when you come across a cave.")
     sleep(0.8)
     print("You've been traveling for a long time and you're tired but, the cave intrigues you.")
@@ -47,8 +48,8 @@ def monster():
         print("It seems harmless, but you don't know what other monsters might be after this one.")
         sleep(0.8)
         print("You have no other choice but to spare it.")
-        choice1.configure(text="Spare", fg="blue",command=life)
-        choice2.configure(text="Spare", fg="blue",command=life)
+        choice1.configure(text="Spare", activebackground="lightblue",command=life)
+        choice2.configure(text="Spare", activebackground="lightblue",command=life)
 
     elif sword == True:
         print("You have the sword to defend yourself!")
@@ -58,8 +59,8 @@ def monster():
         print("It seems harmless,but you don't know what other monsters might be after this one.")
         sleep(0.8)
         print("Do you kill or spare the monster?")
-        choice1.configure(text="Kill", fg="red",command=death)
-        choice2.configure(text="Spare", fg="blue",command=life)
+        choice1.configure(text="Kill", activebackground="red",command=death)
+        choice2.configure(text="Spare", activebackground="lightblue",command=life)
 
 def death():
     global monster_killed
@@ -68,14 +69,9 @@ def death():
     print("You raise your sword and stab the monster.")
 
 def life():
+    os.system('cls')
     print("You spare the monster and it walks away from you.")
     sleep(0.8)
-
-        
-
-
-
-
 
 def campsite():
     os.system('cls')
@@ -98,21 +94,16 @@ def campsite():
 def choosing_paths():
     print("Do you take the left or right path?")
     choice1.configure(text="Left",command=village)
-    choice2.configure(text="Right",command=wrong_way)
+    choice2.configure(text="Right",command=small_hut)
 
-def wrong_way():
-    print("Whoops! It looks like you hit a dead end.")
-    sleep(0.3)
-    print("Try again!")
-    choosing_paths()
+def small_hut():
+    os.system('cls')
+    print("You took the right path and came upon a small hut.")
+    
 
 def village():
     os.system('cls')
-    print("Left or right?")
-    sleep(0.8)
-
-
-
+    print("You took the left path and found a small hut")
     
 
 root = tk.Tk()
