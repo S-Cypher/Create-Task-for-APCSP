@@ -1,12 +1,14 @@
+#Programmed by K. Stewart/S-Cypher
 import tkinter as tk
 from time import sleep
 import os
-
 os.system('cls')
 print("Press 'Start' to start the adventure!")
 
 sword = False
 monster_killed = False
+left_taken = False
+
 
 def story_start():
     os.system('cls')
@@ -16,8 +18,8 @@ def story_start():
     print("You've been traveling for a long time and you're tired but, the cave intrigues you.")
     sleep(0.8)
     print("Do you travel in the cave or make a campsite?")
-    choice1.configure(text="Cave",command=cave)
-    choice2.configure(text="Campsite",command=campsite)
+    choice1.pack(side = tk.LEFT)
+    choice2.pack(side = tk.LEFT)
 
     
 def cave():
@@ -48,8 +50,8 @@ def monster():
         print("It seems harmless, but you don't know what other monsters might be after this one.")
         sleep(0.8)
         print("You have no other choice but to spare it.")
-        choice1.configure(text="Spare", activebackground="lightblue",command=life)
-        choice2.configure(text="Spare", activebackground="lightblue",command=life)
+        choice1.configure(text="Spare",command=life)
+        choice2.configure(text="Spare",command=life)
 
     elif sword == True:
         print("You have the sword to defend yourself!")
@@ -59,20 +61,72 @@ def monster():
         print("It seems harmless,but you don't know what other monsters might be after this one.")
         sleep(0.8)
         print("Do you kill or spare the monster?")
-        choice1.configure(text="Kill", activebackground="red",command=death)
-        choice2.configure(text="Spare", activebackground="lightblue",command=life)
+        choice1.configure(text="Kill",command=death)
+        choice2.configure(text="Spare",command=life)
 
 def death():
     global monster_killed
     monster_killed = True
     os.system('cls')
     print("You raise your sword and stab the monster.")
+    sleep(0.8)
+    print("You continue on in the cave.")
+    sleep(2.2)
+    maze()
 
 def life():
     os.system('cls')
     print("You spare the monster and it walks away from you.")
     sleep(0.8)
+    print("You continue on in the cave.")
+    sleep(2.2)
+    maze()
 
+def maze():
+    os.system('cls')
+    print("You are determined to find a way out of the cave.")
+    sleep(0.8)
+    print("After walking a couple of steps, you find three paths.")
+    sleep(0.8)
+    print("Which way do you go?")
+    choice1.configure(text= "Left", command = left_path)
+    choice2.configure(text = "Forward", command = forward_path)
+    choice3.pack(side = tk.LEFT)
+def show_code():
+    print("The numbers were: 88431")
+    sleep(2.4)
+    maze()
+
+def left_path():
+    os.system('cls')
+    global left_taken
+    if left_taken == True:
+        print("You've already gone this way. There's nothing else to see.")
+        sleep(0.8)
+        print("Do you need to see the numbers again?")
+        choice3.pack_forget()
+        choice1.configure(text = "Yes", command = show_code)
+        choice2.configure(text = "No", command = maze)
+    else:
+        print("The left path goes straight into a dead end.")
+        sleep(0.8)
+        print("But there is a note on the wall.")
+        sleep(0.8)
+        print("It has the numbers: 88431")
+        sleep(0.8)
+        print("Since you don't know what those numbers mean, you head back to the three paths.")
+        sleep(3.0)
+        left_taken = True
+        maze()
+  
+def forward_path():
+    os.system('cls')
+    print("You move forward")
+    
+def right_path():
+    os.system('cls')
+    print("You turn right")
+#############################    
 def campsite():
     os.system('cls')
     print("You chose to set up a campsite with a small tent.")
@@ -113,20 +167,15 @@ frame.pack()
 
 bottomframe = tk.Frame(root)
 bottomframe.pack()
-
+####
 stop = tk.Button(bottomframe,text="Quit",fg="red",command=quit)
 stop.pack(side=tk.BOTTOM)
 
-start = tk.Button(frame,text="Start",command=story_start)
+start = tk.Button(frame,text="Start", activebackground = "aliceblue",command=story_start)
 start.pack(side=tk.LEFT)
 
 choice1 = tk.Button(frame,text="Cave",command=cave)
-choice1.pack(side=tk.LEFT)
-
 choice2 = tk.Button(frame,text="Campsite",command=campsite)
-choice2.pack(side=tk.LEFT)
-
-
-
+choice3 = tk.Button(frame, text= "Right", command = right_path)
 
 root.mainloop()
