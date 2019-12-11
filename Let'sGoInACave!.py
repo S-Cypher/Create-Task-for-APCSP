@@ -12,6 +12,40 @@ shield = False
 inventory = ['torch']
 times_died = 0
 
+def restart_variables():
+  global sword
+  global monster_killed
+  global left_taken
+  global shield
+  global inventory
+  sword = False
+  monster_killed = False
+  left_taken = False
+  shield = False
+  inventory = ['torch']
+  welcome_back()
+
+def welcome_back():
+  global times_died
+  os.system('cls')
+  print("Welcome back!")
+  sleep(1)
+  print("You have died", times_died, "time(s)")
+  sleep(1)
+  if times_died < 5:
+    print("That's okay!")
+    sleep(1)
+    print("Let's try again!")
+    sleep(2.7)
+    story_start()
+  elif times_died >= 5:
+    print("Wow, you love to make bad decisions...")
+    sleep(1)
+    print("Here's a tip! Change the choices that you've made before.")
+    sleep(2.7)
+    story_start()
+  
+
 def story_start():
   os.system('cls')
   start.pack_forget()
