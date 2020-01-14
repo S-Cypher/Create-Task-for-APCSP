@@ -3,8 +3,9 @@
 import tkinter as tk
 from time import sleep
 import os
+import asciiart
 os.system('cls')
-print("Press 'Start' to start the adventure!")
+print("Press 'Start' to begin!")
 
 times_died = 0
 sword = False
@@ -56,9 +57,7 @@ def cave():
   sleep(0.8)
   print("You come across a sword on the ground")
   sleep(0.8)
-  print("   '")
-  print("=={==========-")
-  print("'    ")
+  asciiart.sword()
   sleep(0.8)
   print("Do you pick up the sword or leave it?")
   choice1.configure(text = "Leave it",command=monster)
@@ -74,14 +73,7 @@ def monster():
   os.system('cls')
   print("You're walking down a path until you come across a monster")
   sleep(0.8)
-  print("       /-/--\ ")
-  print("     (@~@)   )/\ ")
-  print(" ___/--      \  |")
-  print("(oo)__ _      )_/")
-  print(" ^^___/       \ ")
-  print("       \       |/-\ ")
-  print("        (      )" )
-  print("        |       \_/")
+  asciiart.monster_dragon()
   sleep(0.8)
   global sword
   if sword == False:
@@ -167,10 +159,18 @@ def forward_path():
   print("You decide to go down the straight path.")
   sleep(0.8)
   print("You seem to have attracted a bear...")
-  
+  asciiart.bear()
   sleep(0.8)
   print("Unlike the first monster, this bear seems hostile.")
   sleep(0.8)
+  battle_choice()
+ 
+def bear_battle():
+  os.system('cls')
+  print("Alright! Time for some action!")
+  sleep(1.6)
+  print("You look into your inventory to find some items.")
+  
 
   if sword == True:
     os.system('cls')
@@ -187,20 +187,31 @@ def forward_path():
     os.system('cls')
     print("It seems that you don't have anything to fight against the bear...")
     sleep(2.8)
+    print("You try to attack with your fists but the bear has a huge advantage.")
+    sleep(1)
     print("The bear roars and slashes you across the chest.")
     sleep(0.8)
     print("You have died from blood loss.")
     sleep(1.6)
     death_message()
+ 
+def escape():
+  os.system('cls')
+  print("Scared by the bear, you ran back to the three paths.")
+  sleep(2)
+  maze()
+
+def battle_choice():
+  os.system('cls')
+  print("Do you want to battle the bear?")
+  choice1.configure(text="Yes", command= bear_battle)
+  choice2.configure(text="No", command = escape)
+  choice3.pack_forget()
 
 def yes_torch():
   global fight_w_torch
   fight_w_torch = True
   bear_battle()
-
-def bear_battle():
-  print("This choice starts the fight.")
-
 
 def right_path():
   os.system('cls')
@@ -241,6 +252,7 @@ def shield_straight():
   global times_died
   print("Going straight, you find a shield.")
   sleep(0.8)
+  asciiart.shield()
   global sword
   if sword == False:
     if times_died > 0:
@@ -254,6 +266,7 @@ def shield_straight():
   sleep(0.8)
   choice1.configure(text="Shield", command = a_shield)
   choice2.configure(text="No shield", command = no_shield)
+  choice3.pack_forget()
 
 
 def a_shield():
