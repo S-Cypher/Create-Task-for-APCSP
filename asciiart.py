@@ -1,1 +1,42 @@
-print ("Hello world")
+def shield():
+  print("|`-._/\_.-`|")
+  print("|    ||    |")
+  print("|___o()o___|")
+  print("|__((<>))__|")
+  print("\   o\/o   /")
+  print(" \   ||   /")
+  print("  \  ||  /")
+  print("   '.||.'")
+  print("      ``")
+
+def monster_dragon():
+  print("       /-/--\ ")
+  print("     (@~@)   )/\ ")
+  print(" ___/--      \  |")
+  print("(oo)__ _      )_/")
+  print(" ^^___/       \ ")
+  print("       \       |/-\ ")
+  print("        (      )" )
+  print("        |       \_/")
+
+def sword():
+  print("   '")
+  print("=={==========-")
+  print("'    ")
+
+def bear():
+  print("       ( )___( )")
+  print("       /__oo   \ ")
+  print("      ( \/     )")
+  print("      | `=/    |")
+  print("      /         \ ")
+  print("     /  /    \   \ ")
+  print("    /  (      \   \ ")
+  print("    ( ,_/_      \  \ ")
+  print("    \_ '=       \   )")
+  print("      ""'       /  /")
+  print("      ;        /  /'?")
+  print("      :       (((( /")
+  print(" ctr   `._   \  _ (")
+  print("        __|   |  /_  ")
+  print("       (__,..'_._.) ")
