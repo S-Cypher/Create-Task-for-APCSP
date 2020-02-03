@@ -5,12 +5,19 @@ from time import sleep
 import os
 import asciiart
 os.system('cls')
-print("Press 'Start' to begin!")
+print("Before you start, there will be buttons in the open screen.")
+sleep(2)
+print("Once clicked, they will take you to the next part of the story.")
+sleep(2)
+print("Your survival will depend on your choices.")
+sleep(2)
+print("Alright! Let's get started!")
+sleep(2)
+print("Press start to begin!")
 
 times_died = 0
 sword = False
 monster_killed = False
-left_taken = False
 shield = False
 fight_w_torch = False
 inventory = ['torch']
@@ -19,12 +26,10 @@ inventory = ['torch']
 def reset_variables():
   global sword
   global monster_killed
-  global left_taken
   global shield
   global fight_w_torch
   sword = False
   monster_killed = False
-  left_taken = False
   shield = False
   fight_w_torch = False
   welcome_back()
@@ -73,7 +78,7 @@ def monster():
   os.system('cls')
   print("You're walking down a path until you come across a monster")
   sleep(0.8)
-  asciiart.monster_dragon()
+  asciiart.monster_dragon()####
   sleep(0.8)
   global sword
   if sword == False:
