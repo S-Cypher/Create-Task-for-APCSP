@@ -5,21 +5,12 @@ from time import sleep
 import os
 import asciiart
 os.system('cls')
-print("Before you start, there will be buttons in the open screen.")
-sleep(2)
-print("Once clicked, they will take you to the next part of the story.")
-sleep(2)
-print("Your survival will depend on your choices.")
-sleep(2)
-print("Alright! Let's get started!")
-sleep(2)
 print("Press start to begin!")
 
 times_died = 0
 sword = False
 monster_killed = False
 shield = False
-fight_w_torch = False
 inventory = ['torch']
 
 #These variables have to be global otherwise the program can't check for certain choices
@@ -27,11 +18,9 @@ def reset_variables():
   global sword
   global monster_killed
   global shield
-  global fight_w_torch
   sword = False
   monster_killed = False
   shield = False
-  fight_w_torch = False
   welcome_back()
 
 
@@ -49,8 +38,6 @@ def story_start():
   os.system('cls')
   start.pack_forget()
   print("You're exploring a forest when you come across a cave.")
-  sleep(0.8)
-  print("You've been traveling for a long time and you're tired but, the cave intrigues you.")
   sleep(0.8)
   print("You decide to explore the cave.")
   sleep(1.8)
@@ -78,7 +65,7 @@ def monster():
   os.system('cls')
   print("You're walking down a path until you come across a monster")
   sleep(0.8)
-  asciiart.monster_dragon()####
+  asciiart.monster
   sleep(0.8)
   global sword
   if sword == False:
@@ -109,15 +96,27 @@ def death():
   os.system('cls')
   print("You raise your sword and stab the monster.")
   sleep(0.8)
-  print("You continue on in the cave.")
+  print("Near the monster's body, there's a piece of paper.")
+  sleep(0.8)
+  print("It reads: 88431")
+  sleep(0.8)
+  print("You're confused by the paper")
+  sleep(0.8)
+  print("But, you continue on in the cave.")
+  inventory.append("code paper")
   sleep(2.2)
   maze()
 
 def life():
   os.system('cls')
-  print("You spare the monster and it walks away from you.")
+  print("You spare the monster and it gives you a piece of paper.")
   sleep(0.8)
-  print("You continue on in the cave.")
+  print("The paper reads: 88431")
+  sleep(0.8)
+  print("You don't know what those numbers mean.")
+  sleep(0.8)
+  print("But, you continue on in the cave.")
+  inventory.append("code paper")
   sleep(2.2)
   maze()
 
@@ -125,39 +124,12 @@ def maze():
   os.system('cls')
   print("You are determined to find a way out of the cave.")
   sleep(0.8)
-  print("After walking a couple of steps, you find three paths.")
+  print("After walking a couple of steps, you find two paths.")
   sleep(0.8)
   print("Which way do you go?")
-  choice1.configure(text= "Left", command = left_code)
+  choice1.pack_forget()
   choice2.configure(text = "Straight", command = forward_path)
   choice3.pack(side = tk.LEFT)
-
-def show_code():
-  print("The numbers were: 88431")
-  sleep(2.4)
-  maze()
-
-def left_code():
-  os.system('cls')
-  global left_taken
-  if left_taken == True:
-      print("You've already gone this way. There's nothing else to see.")
-      sleep(0.8)
-      print("Do you need to see the numbers again?")
-      choice3.pack_forget()
-      choice1.configure(text = "Yes", command = show_code)
-      choice2.configure(text = "No", command = maze)
-  else:
-      print("The left path goes straight into a dead end.")
-      sleep(0.8)
-      print("But there is a note on the wall.")
-      sleep(0.8)
-      print("It has the numbers: 88431")
-      sleep(0.8)
-      print("Since you don't know what those numbers mean, you head back to the three paths.")
-      sleep(3.0)
-      left_taken = True
-      maze()
   
 def forward_path():
   os.system('cls')
