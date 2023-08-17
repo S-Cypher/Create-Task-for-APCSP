@@ -1,4 +1,6 @@
 #Keira Stewart
+#Let'sGoInACave!.py is the original file that I haven't touched in almost 4 years
+#Text Game.py (this file) is a copy of the original with my recent comments about it.
 '''
 Short background about this project:
 I made this code in 10th grade with a small understanding of the tkinter library.
